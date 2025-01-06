@@ -6,7 +6,7 @@ from config.settings import DATABASE, USER, PASSWORD, HOST, DRIVER, PAD_DATABASE
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-
+        print("Старт создания БД")
         ConnectionString = f'''
             DRIVER={DRIVER};
             SERVER={HOST};
@@ -17,7 +17,7 @@ class Command(BaseCommand):
         try:
             conn = pyodbc.connect(ConnectionString)
             conn.autocommit = True
-            conn.execute(fr"CREATE DATABASE {PAD_DATABASE}")
+            conn.execute(fr"CREATE DATABASE {DATABASE}")
         except pyodbc.ProgrammingError as ex:
             print(ex)
         else:
