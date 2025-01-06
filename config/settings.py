@@ -95,7 +95,10 @@ HOST = os.getenv('MS_SQL_SERVER')
 DATABASE = os.getenv('MS_SQL_DATABASE')
 PAD_DATABASE = os.getenv('MS_SQL_PAD_DATABASE')
 SU_DJANGO_PASSWORD = os.getenv('SU_DJANGO_PASSWORD')
+MODERATOR_PASSWORD = os.getenv('MODERATOR_PASSWORD')
+USER_PASSWORD = os.getenv('MEMBER_PASSWORD')
 DRIVER = os.getenv('MS_SQL_DRIVER')
+
 
 DATABASES = {
     'default':{
@@ -154,18 +157,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS =(
-#         BASE_DIR /'static', # Путь к статическим файлам
-# )
+STATICFILES_DIRS =(
+        BASE_DIR /'static', # Путь к статическим файлам
+)
 """django.views.static.serve()
 +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT
 прописывается config.urls.py
 """
 # Настройки для загрузки изображений
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = (
-#     BASE_DIR /'media'
-# )
+MEDIA_URL = '/media/'
+MEDIA_ROOT = (
+    BASE_DIR /'media'
+)
 
 """Поскольку MEDIA_URL определен как '/media/', то config.urls.py добавляется следующая строка
 +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
