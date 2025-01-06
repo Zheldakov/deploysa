@@ -176,7 +176,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # добавлена авторизована модель пользователя
-# AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'
 
 # задает URL-адрес, на который следует перенаправлять пользователя после успешной авторизации
 # LOGIN_REDIRECT_URL = 'tech:all_tech' #'/'
