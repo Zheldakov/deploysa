@@ -1,0 +1,247 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+.conteiner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.block_right,
+.block_left {
+    height: 100vh;
+    border: 1px, solid, black;
+}
+
+/* _________________left block_____________ */
+.block_left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(20, 109, 20);
+    font-weight: 700;
+    padding-top: 10px;
+    }
+
+.text_logo{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* background-color: rgb(20, 109, 20); */
+    font-size: 60%;
+    color: white;
+    padding: 3px;
+}
+
+/* .logo span {
+    font-size: 70px;
+    color: red;
+    font-weight: 900;
+    -webkit-text-stroke: 3px #000000;
+} */
+
+.input {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input_form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form_input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.form_input p{
+    padding: 2px;
+    align-items: end;
+   }
+
+/*.form_input p input{*/
+/*    width: 50%;*/
+/*}*/
+/*.input_form input {*/
+/*    margin: 5px;*/
+/*    height: 5%;*/
+/*    width: 50%;*/
+/*    font-size: 110%;*/
+/*    background-color: rgba(3, 3, 3, 0.074);*/
+/*    !* background-color: rgb(237, 241, 237); *!*/
+/*   border: 1px solid;*/
+/*}*/
+
+.input_form input:focus {
+    outline: none;
+    border: 1px, solid, rgb(63, 133, 63);
+    background-color: rgb(186, 219, 186);
+}
+
+.input_form button {
+    margin: 5px;
+    height: 5%;
+    width: 50%;
+    font-size: 120%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px, solid, rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.input_form button:hover {
+    background-color: rgba(20, 109, 20, 0.7);
+    border: 1px, solid, rgba(20, 109, 20, 0.7);
+    /* background-color: rgb(63, 133, 63);
+    border: 1px, solid, rgb(63, 133, 63); */
+    color: white;
+
+}
+
+.footer {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-weight: 400;
+    padding-bottom: 5px;
+}
+
+.footer a {
+    font-style: normal;
+    color: rgb(63, 133, 63);
+    /* text-decoration: none; */
+}
+
+.footer a:hover {
+    font-weight: 700;
+    /* text-decoration:underline; */
+}
+
+/* _________________right block_____________ */
+
+.block_right {
+    width: 70%;
+    background-image: url(../image/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_top_block,
+.right_centr_block,
+.right_bottom_block {
+    width: 100%;
+    height: 30%;
+    /* border: 3px solid red; */
+    margin: 15px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.right_top_block {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.right_centr_block {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.right_bottom_block {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#block_top,
+#block_center,
+#block_bottom {
+    /* background-color: red; */
+    border: 3px solid black;
+    width: 350px;
+    height: 250px;
+    box-shadow: 5px 5px 30px rgb(78, 117, 19);
+}
+
+#block_top {
+
+    background-image: url(../image/kombain.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    /* transition:  background-size 1s; */
+    transition: background-image .8s;
+}
+
+#block_center {
+    background-image: url(../image/perevozka2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    /* transition: background-size .5s; */
+    transition: background-image .8s;
+
+}
+
+#block_bottom {
+    background-image: url(../image/pole.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    transition: background-size 1s;
+
+
+}
+
+#block_top:hover {
+    /* background-size: 190%; */
+    background-image: url(../image/uborka.png);
+     
+}
+
+#block_center:hover {
+    /* background-size: 190%; */
+    background-image: url(../image/perevozka3.png);
+      
+}
+
+#block_bottom:hover {
+    background-size: 190%;
+        
+}

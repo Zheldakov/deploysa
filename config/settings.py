@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # добавленные приложения
     'users',
+    'technic',
 ]
 
 # плагины и библиотеки
