@@ -55,27 +55,23 @@
 
 .text_logo {
     background-image: url(../image/bg1.jpg);
-    /* background-color: black; */
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
     color: white;
     display: flex;
-    justify-content: end;
-    align-items: center;
-    /* opacity: 1; */
-    /* border: 3px, solid;
-    color: red; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+}
+.text_logo a{
+    margin-right: 3px;
 }
 .user_data {
     font-size: 15px;
 }
 
-/*
-.menu {
-    border: 3px, solid;
-    color: red;
-} */
 
 /*FOOTER */
 .footer {

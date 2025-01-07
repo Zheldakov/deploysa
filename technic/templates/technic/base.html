@@ -21,10 +21,8 @@
             <div class="text_logo">
                 <div class="user_data">
                     Имя: {{ user_name }}<br>
-                    E-mail: {{ user_email }}<br>        
-                    <a href="{% url 'users:logout_user' %}" style="color: red;">Выход</a>                
+                    E-mail: {{ user_email }}<br>                   
                 </div>
-
             </div>
             <div class="menu">
                 <div class="navbar">
@@ -38,7 +36,17 @@
                             <a href="#">Ссылка 2</a>
                             <a href="#">Ссылка 3</a>
                         </div>
+                    
                     </div>
+                    <div class="dropdown">
+                        <button class="dropbtn2">Настройка</button>
+                        <div class="dropdown-content2">
+                            <a href="#">Профиль</a>
+                            <a href="#">Пароль</a>
+                        </div>
+                    
+                    </div>
+                    <a href="{% url 'users:logout_user' %}" style="color: brown;">Выход</a>
                 </div>
             </div>
         </div>
