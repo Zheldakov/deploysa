@@ -1,0 +1,65 @@
+<!--{% load static %}-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/login_page.css' %}" rel="stylesheet">
+    <title>Control & Accounting system</title>
+</head>
+
+<body>
+
+    <div class="conteiner">
+        <div class="block_left">
+
+
+            <div class="logo">
+               
+                    <!-- <span>С<span style="font-size: 45px;">&</span>A</span> system -->
+                    <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: auto;">
+                    <div class="text_logo"> Система контроля и учета</div>
+
+                
+            </div>
+
+
+
+            <div class="input">
+                <form method="post" class="input_form">
+                    <div style="width: 50%; text-align:center">
+                        Вход в систему:
+                    </div>
+                    <div class="form_input">
+                     {% csrf_token %}
+                    {{ form.as_p }}
+                    </div>
+<!--                     <input type="text" name="loginUser" id="loginUser" placeholder=" Login">-->
+<!--                     <input type="password" name="passwordUser" id="passwordUser" placeholder=" Password">-->
+                     <button type="submit">Войти</button>
+                </form>
+            </div>
+
+
+
+            <div class="footer">
+                <div>
+                    &#9733; This is <a href="https://github.com/Zheldakov">MY</a> private PET-project</div>
+            </div>
+        </div>
+        <div class="block_right">
+            <div class="right_top_block"><div id="block_top"></div></div>
+            <div class="right_centr_block"><div id="block_center"></div></div>
+            <div class="right_bottom_block"><div id="block_bottom"></div></div>
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
