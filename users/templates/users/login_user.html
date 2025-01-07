@@ -1,4 +1,4 @@
-<!--{% load static %}-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +33,15 @@
                     </div>
                     <div class="form_input">
                      {% csrf_token %}
-                    {{ form.as_p }}
+                        {{ form.as_p }}
+
                     </div>
 <!--                     <input type="text" name="loginUser" id="loginUser" placeholder=" Login">-->
 <!--                     <input type="password" name="passwordUser" id="passwordUser" placeholder=" Password">-->
-                     <button type="submit">Войти</button>
+                     {% if user is False %}
+                            <span style="color:red">Данные не корректны</span>
+                        {% endif %}
+                    <button type="submit">Войти</button>
                 </form>
             </div>
 

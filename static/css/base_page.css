@@ -59,9 +59,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    color: white;
+    display: flex;
+    justify-content: end;
+    align-items: center;
     /* opacity: 1; */
     /* border: 3px, solid;
     color: red; */
+}
+.user_data {
+    font-size: 15px;
 }
 
 /*
