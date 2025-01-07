@@ -24,4 +24,5 @@ from django.conf.urls.static import static
 urlpatterns = [
                   path('admin/', admin.site.urls),  # URL для административной панели Django
                   path('', include('users.urls', namespace='index')),  # URL для приложения users
+                path('technic/', include('technic.urls', namespace='technic')), # URL для приложения technic
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Добавляем медиафайлы
