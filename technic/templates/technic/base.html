@@ -1,71 +1,65 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base_page.css' %}">
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base_page.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
     <title>C&A: {{ title }}</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="logo">
+      <div class="left_logo">
+        <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;" />
+      </div>
 
-        <div class="left_logo">
-            <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;">
+      <div class="right_logo">
+        <div class="text_logo">
+          <div class="user_data">
+            Имя: {{ user_name }}<br />
+            E-mail: {{ user_email }}<br />
+          </div>
         </div>
-
-        <div class="right_logo">
-            <div class="text_logo">
-                <div class="user_data">
-                    Имя: {{ user_name }}<br>
-                    E-mail: {{ user_email }}<br>                   
-                </div>
+        <div class="menu">
+          <div class="navbar">
+            <a href="#">Главная</a>
+            <a href="#">Новости</a>
+            <a href="#">Техника</a>
+            <div class="dropdown">
+              <button class="dropbtn">Инструменты</button>
+              <div class="dropdown-content">
+                <a href="#">Ссылка 1</a>
+                <a href="#">Ссылка 2</a>
+                <a href="#">Ссылка 3</a>
+              </div>
             </div>
-            <div class="menu">
-                <div class="navbar">
-                    <a href="#">Главная</a>
-                    <a href="#">Новости</a>
-                    <a href="#">Техника</a>
-                    <div class="dropdown">
-                        <button class="dropbtn">Инструменты</button>
-                        <div class="dropdown-content">
-                            <a href="#">Ссылка 1</a>
-                            <a href="#">Ссылка 2</a>
-                            <a href="#">Ссылка 3</a>
-                        </div>
-                    
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn2">Настройка</button>
-                        <div class="dropdown-content2">
-                            <a href="#">Профиль</a>
-                            <a href="#">Пароль</a>
-                        </div>
-                    
-                    </div>
-                    <a href="{% url 'users:logout_user' %}" style="color: brown;">Выход</a>
-                </div>
+            <div class="dropdown">
+              <button class="dropbtn2">Настройка</button>
+              <div class="dropdown-content2">
+                <a href="#">Профиль</a>
+                <a href="#">Пароль</a>
+              </div>
             </div>
+            <a href="{% url 'users:logout_user' %}" class="exitbtn">Выход</a>
+          </div>
         </div>
-
+      </div>
     </div>
 
     <div class="conteiner">
-        <div class="content">
-            {% block content %}
-            {% endblock %}
+      <div class="content">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+
+      <div class="footer">
+        <div align="center">
+          &#9733; This is my private "PET-project". Welcome my <a href="https://github.com/Zheldakov" target="_blank">github</a> page.
         </div>
-
-        <div class="footer">
-            <div>
-                &#9733; This is <a href="https://github.com/Zheldakov">MY</a> private PET-project</div>
-        </div>
-
+      </div>
     </div>
-    </div>
-</body>
-
+  </body>
 </html>

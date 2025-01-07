@@ -84,7 +84,7 @@
 }
 
 .form_input p{
-    padding: 2px;
+    margin: 2px 5px;
     align-items: end;
    }
 
@@ -109,8 +109,8 @@
 
 .input_form button {
     margin: 5px;
-    height: 5%;
-    width: 50%;
+    /* height: 100%; */
+    width: 100%;
     font-size: 120%;
     background-color: rgba(0, 0, 0, 0.9);
     border: 1px, solid, rgba(0, 0, 0, 0.9);

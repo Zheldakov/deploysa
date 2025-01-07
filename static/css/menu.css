@@ -58,7 +58,7 @@ body {
 
 .dropdown-content2,
 .dropdown .dropbtn2 {
-  min-width: 110px;
+  min-width: 112px;
 }
 
 .dropdown-content a,
@@ -79,4 +79,13 @@ body {
 .dropdown:hover .dropdown-content,
 .dropdown:hover .dropdown-content2 {
   display: block;
+}
+
+.navbar .exitbtn{
+  color: brown;
+}
+
+.navbar .exitbtn:hover{
+  background-color: brown;
+  color: white;
 }
