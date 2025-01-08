@@ -22,7 +22,9 @@
             <div style="width: 50%; text-align:center; margin-bottom: 5px;" >Вход в систему:</div>
             <div class="form_input">
               {% csrf_token %}
-              {{ form.as_p }}
+<!--                {{ form.as_p}}-->
+              {{ form.email }}
+              {{ form.password }}
               <button type="submit">Войти</button>
             </div>
             <!-- <input type="text" name="loginUser" id="loginUser" placeholder=" Login"> -->
