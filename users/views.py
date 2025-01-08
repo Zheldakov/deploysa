@@ -13,6 +13,8 @@ def user_login_view(request):
     confirmation=True
     if request.method == 'POST':
         form = UserLoginForm(request.POST)  # Создаем экземпляр формы
+        print(form.is_valid(),'валидность')
+        print(form.errors)
         if form.is_valid(): # Если форма валидна
             cd = form.cleaned_data  #Получаем данные email и password и очищаем форму
             user = authenticate(email=cd['email'], password=cd['password'])  # Аутентифицируем пользователя
