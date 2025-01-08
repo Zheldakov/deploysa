@@ -154,7 +154,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Подключение статических файлов (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
@@ -165,7 +165,7 @@ STATICFILES_DIRS =(
 +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT
 прописывается config.urls.py
 """
-# Настройки для загрузки изображений
+# Подключение медиа файлов
 MEDIA_URL = '/media/'
 MEDIA_ROOT = (
     BASE_DIR /'media'
