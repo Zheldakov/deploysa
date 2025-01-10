@@ -12,15 +12,18 @@
             </div>
         </div>
         <div class="user_text">
-            <span><div class="label_user">Имя:</div> <div>{{user.first_name}}</div></span>
-            <span><div class="label_user">Фамилия:</div> <div>{{user.last_name}}</div></span>
-            <span><div class="label_user">Почта:</div> <div>{{user.email}}</div></span>
-            <span><div class="label_user">Телефон:</div> <div>{{user.phone|default:"не указано"}}</div></span>
-            <span><div class="label_user">Телеграмм:</div> <div>{{user.telegram|default:"не указано"}}</div></span>
+            <span><div class="label_user">Имя:</div> <div>{{object.first_name}}</div></span>
+            <span><div class="label_user">Фамилия:</div> <div>{{object.last_name}}</div></span>
+            <span><div class="label_user">Почта:</div> <div>{{object.email}}</div></span>
+            <span><div class="label_user">Телефон:</div> <div>{{object.phone|default:"не указано"}}</div></span>
+            <span><div class="label_user">Телеграмм:</div> <div>{{object.telegram|default:"не указано"}}</div></span>
+            <span><div class="label_user">Роль:</div> <div>{{object.role}}</div></span>
         </div>
         <div class="button_form">
             <a href="{% url 'users:update_user' %}" class="btn_enter">Редактировать</a>
             <a href="{% url 'technic:technic_list' %}" class="btn_esc">Назад</a>
+<!--            <button onclick="window.history.back()" class="btn_esc">Назад</button>-->
+
         </div>
     </div>
 </div><span></span>
