@@ -20,9 +20,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 # urls для административной панели Django
 urlpatterns = [
-                  path('admin/', admin.site.urls),  # URL для административной панели Django
-                  path('', include('users.urls', namespace='index')),  # URL для приложения users
+                  path('admin_panel/', admin.site.urls),  # URL для административной панели Django
+                  path('', include('users.urls', namespace='users')),  # URL для приложения users
                 path('technic/', include('technic.urls', namespace='technic')), # URL для приложения technic
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Добавляем медиафайлы
