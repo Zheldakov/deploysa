@@ -15,13 +15,13 @@ class UserRoles(models.TextChoices):
 class User(AbstractUser):
     """Модель пользователя с полями email, телефон и Telegram username."""
     username = None
-    email = models.EmailField(unique=True,verbose_name='email')
+    email = models.EmailField(unique=True,verbose_name='E-mail')
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.USER)
-    first_name = models.CharField(max_length=150, verbose_name='First Name',default="Anonymous")
-    last_name = models.CharField(max_length=150, verbose_name='Last Name', default="Anonymous")
-    phone = models.CharField(max_length=35, verbose_name='Phone number', **NULLABLE)
-    telegram = models.CharField(max_length=150, verbose_name='Telegram Username', **NULLABLE)
-    avatar = models.ImageField(upload_to='users/', verbose_name='Avatar', **NULLABLE)
+    first_name = models.CharField(max_length=150, verbose_name='Имя',default="Не указано")
+    last_name = models.CharField(max_length=150, verbose_name='Фамилия', default="Не указано")
+    phone = models.CharField(max_length=35, verbose_name='Телефон', **NULLABLE)
+    telegram = models.CharField(max_length=150, verbose_name='Телеграм', **NULLABLE)
+    avatar = models.ImageField(upload_to='users/', verbose_name='Аватарка', **NULLABLE)
     is_active = models.BooleanField(default=True, verbose_name='active', help_text='Активный пользователь')
 
     USERNAME_FIELD = "email"
@@ -31,6 +31,6 @@ class User(AbstractUser):
         return  f'{self.email}'
 
     class Meta:
-        verbose_name = 'User'
-        verbose_name_plural ='User'
+        verbose_name = 'Пользователь'
+        verbose_name_plural ='Пользователи'
         ordering = ['id']
