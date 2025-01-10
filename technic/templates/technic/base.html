@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base_page.css' %}" />
     <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
     <title>C&A: {{ title }}</title>
   </head>
 
@@ -38,8 +39,8 @@
             <div class="dropdown">
               <button class="dropbtn2">Настройка</button>
               <div class="dropdown-content2">
-                <a href="#">Профиль</a>
-                <a href="#">Пароль</a>
+                <a href="{% url 'users:profile_user' %}">Профиль</a>
+                <a href="{% url 'users:change_password_user' %}">Пароль</a>
               </div>
             </div>
             <a href="{% url 'users:logout_user' %}" class="exitbtn">Выход</a>
