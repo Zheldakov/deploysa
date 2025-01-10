@@ -3,10 +3,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/base_page.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base_page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
     <title>C&A: {{ title }}</title>
   </head>
 
@@ -19,8 +20,9 @@
       <div class="right_logo">
         <div class="text_logo">
           <div class="user_data">
-            Имя: {{ user_name }}<br />
-            E-mail: {{ user_email }}<br />
+            Имя: {{request.user.first_name}}<br>
+            E-mail: {{request.user.email}}<br>
+
           </div>
         </div>
         <div class="menu">
@@ -31,7 +33,10 @@
             <div class="dropdown">
               <button class="dropbtn">Инструменты</button>
               <div class="dropdown-content">
-                <a href="#">Ссылка 1</a>
+                {% if request.user.role == "admin" %}
+                 <a href="//localhost:8000/admin_panel/">Админка</a>
+                 <a href="{% url 'users:users_list' %}">Пользователи</a>
+                {% endif %}
                 <a href="#">Ссылка 2</a>
                 <a href="#">Ссылка 3</a>
               </div>
