@@ -1,0 +1,13 @@
+.pagination{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pag_next{
+    color: rgb(20, 109, 20);
+}
+.pag_active{
+    color: rgb(163, 15, 15)
+}
