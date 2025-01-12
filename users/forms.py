@@ -3,11 +3,10 @@ from .models import User
 
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
 from django.forms import ModelForm
 
 from users.validators import validate_password
-
 
 
 class StyleFromMixin:
@@ -15,6 +14,7 @@ class StyleFromMixin:
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
 
 class UserLoginForm(forms.Form):
     """ Форма для авторизации пользователя."""
@@ -24,8 +24,9 @@ class UserLoginForm(forms.Form):
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
-       'placeholder': 'Пароль'
+        'placeholder': 'Пароль'
     }))
+
 
 class UserForm(StyleFromMixin, forms.ModelForm):
     """ Форма пользователя."""
@@ -33,7 +34,9 @@ class UserForm(StyleFromMixin, forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email',
-                  'phone', 'telegram', 'avatar',)
+                  'phone', 'telegram', 'avatar', 'role', 'is_active',)
+
+
 #
 
 # class UserLoginForm(ModelForm):
@@ -70,6 +73,15 @@ class UserForm(StyleFromMixin, forms.ModelForm):
 #     class Meta:
 #         model = User
 #         fields = ['email', 'password']
+class UserCreateForm(StyleFromMixin, UserCreationForm):
+    """ Форма для создания нового пользователя."""
+
+    class Meta:
+        # Поля модели User
+        model = User
+        fields = ('email', 'first_name', 'last_name',
+                  'phone', 'telegram', 'role',)
+
 
 class UserPasswordChangeForm(StyleFromMixin, PasswordChangeForm):
     """ Форма для смены пароля."""
@@ -83,6 +95,6 @@ class UserPasswordChangeForm(StyleFromMixin, PasswordChangeForm):
             raise ValidationError(
                 self.error_messages["password_mismatch"],
                 code="password_mismatch",
-                )
+            )
         password_validation.validate_password(password2, self.user)
         return password2
