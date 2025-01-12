@@ -1,32 +1,13 @@
 {% extends 'technic/base.html' %}
-{% load my_tags %}
 {% block content %}
 <div class="content_form">
-
     <div class="header_form">{{ title }}</div>
     <div class="body_form">
-
-        <div class="form_form_profile">
-            <div class="image_form" style="background-image: url({{ user.avatar|user_media }})">
-
-            </div>
-        </div>
-        <div class="user_text">
-            <span><div class="label_user">Имя:</div> <div>{{object.first_name}}</div></span>
-            <span><div class="label_user">Фамилия:</div> <div>{{object.last_name}}</div></span>
-            <span><div class="label_user">Почта:</div> <div>{{object.email}}</div></span>
-            <span><div class="label_user">Телефон:</div> <div>{{object.phone|default:"не указано"}}</div></span>
-            <span><div class="label_user">Телеграмм:</div> <div>{{object.telegram|default:"не указано"}}</div></span>
-            <span><div class="label_user">Роль:</div> <div>{{object.role}}</div></span>
-        </div>
+       {% include 'users/includes/inc_user_profile.html' with object=object %}
         <div class="button_form">
             <a href="{% url 'users:update_all_user' object.pk %}" class="btn_enter">Редактировать</a>
             <a href="{% url 'users:users_list' %}" class="btn_esc">Назад</a>
-            <!--            <button onclick="window.history.back()" class="btn_esc">Назад</button>-->
-
         </div>
     </div>
-</div><span></span>
-
-
+</div>
 {% endblock %}
