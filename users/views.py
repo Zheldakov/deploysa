@@ -7,9 +7,9 @@ from django.contrib.auth import authenticate, login, logout, user_login_failed
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import request
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, DetailView, ListView, DeleteView
+from django.views.generic import UpdateView, DetailView, ListView, DeleteView, CreateView
 
-from users.forms import UserLoginForm, UserForm, UserPasswordChangeForm
+from users.forms import UserLoginForm, UserForm, UserPasswordChangeForm, UserCreateForm
 from users.models import User
 
 
@@ -47,6 +47,12 @@ def user_logout_view(request):
     logout(request)
     return redirect('users:login_user')
 
+class UserCreateView(CreateView):
+    """ Создание пользователя."""
+    model = User
+    form_class = UserCreateForm
+    success_url = reverse_lazy('users:users_list')
+    template_name = 'users/create_user.html'
 
 class UserProfileView(DetailView):
     """ Просмотр профиля пользователя."""
@@ -111,11 +117,11 @@ class UserListView(LoginRequiredMixin, ListView):
         'title': f'Все пользователи'
     }
 
-    def get_queryset(self):
-        # фильтр показывает только активных пользователей
-        queryset = super().get_queryset()
-        queryset = queryset.filter(is_active=True)
-        return queryset
+    # def get_queryset(self):
+    #     # фильтр показывает только активных пользователей
+    #     queryset = super().get_queryset()
+    #     queryset = queryset.filter(is_active=True)
+    #     return queryset
 
 
 class AllUserProfileView(DetailView):
