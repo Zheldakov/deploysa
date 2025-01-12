@@ -1,71 +1,77 @@
 {% load static %}
+{% load my_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
-    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
     <title>C&A: {{ title }}</title>
-  </head>
+</head>
 
-  <body>
-    <div class="logo">
-      <div class="left_logo">
-        <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;" />
-      </div>
-
-      <div class="right_logo">
-        <div class="text_logo">
-          <div class="user_data">
-            Имя: {{request.user.first_name}}<br>
-            E-mail: {{request.user.email}}<br>
-
-          </div>
-        </div>
-        <div class="menu">
-          <div class="navbar">
-            <a href="#">Главная</a>
-            <a href="#">Новости</a>
-            <a href="#">Техника</a>
-            <div class="dropdown">
-              <button class="dropbtn">Инструменты</button>
-              <div class="dropdown-content">
-                {% if request.user.role == "admin" %}
-                 <a href="//localhost:8000/admin_panel/">Админка</a>
-                 <a href="{% url 'users:users_list' %}">Пользователи</a>
-                {% endif %}
-                <a href="#">Ссылка 2</a>
-                <a href="#">Ссылка 3</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn2">Настройка</button>
-              <div class="dropdown-content2">
-                <a href="{% url 'users:profile_user' %}">Профиль</a>
-                <a href="{% url 'users:change_password_user' %}">Пароль</a>
-              </div>
-            </div>
-            <a href="{% url 'users:logout_user' %}" class="exitbtn">Выход</a>
-          </div>
-        </div>
-      </div>
+<body>
+<div class="logo">
+    <div class="left_logo">
+        <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;">
     </div>
 
-    <div class="conteiner">
-      <div class="content">
+    <div class="right_logo">
+        <div class="text_logo">
+            <div class="user_ava" style="background-image: url({{ request.user.avatar|user_media }})">
+
+            </div>
+            <div class="user_data">
+                Имя: {{request.user.first_name}}<br>
+                E-mail: {{request.user.email}}<br>
+
+            </div>
+        </div>
+        <div class="menu">
+            <div class="navbar">
+                <a href="#">Главная</a>
+                <a href="#">Новости</a>
+                <a href="#">Техника</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Инструменты</button>
+                    <div class="dropdown-content">
+                        {% if request.user.role == "admin" %}
+                        <a href="//localhost:8000/admin_panel/">Админка</a>
+                        <a href="{% url 'users:users_list' %}">Пользователи</a>
+                        {% endif %}
+                        <a href="#">Ссылка 2</a>
+                        <a href="#">Ссылка 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn2">Настройка</button>
+                    <div class="dropdown-content2">
+                        <a href="{% url 'users:profile_user' %}">Профиль</a>
+                        <a href="{% url 'users:change_password_user' %}">Пароль</a>
+                    </div>
+                </div>
+                <a href="{% url 'users:logout_user' %}" class="exitbtn">Выход</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="conteiner">
+    <div class="content">
         {% block content %}
 
         {% endblock %}
-      </div>
-
-      <div class="footer">
-        <div align="center">
-          &#9733; This is my private "PET-project". Welcome my <a href="https://github.com/Zheldakov" target="_blank">github</a> page.
-        </div>
-      </div>
     </div>
-  </body>
+
+    <div class="footer">
+        <div align="center">
+            &#9733; This is my private "PET-project". Welcome my <a href="https://github.com/Zheldakov" target="_blank">github</a>
+            page.
+        </div>
+    </div>
+</div>
+</body>
 </html>

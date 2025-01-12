@@ -1,18 +1,21 @@
 {% load my_tags %}
-  <div class="block_list">
+<div class="block_list">
     <div class="image_list_block" style="background-image: url({{ object.avatar|user_media }})">
     </div>
-   
+
     <div class="text_list_block">
-      <h3>{{ object.first_name }} {{ object.last_name }}</h3>
-      <ul class="ul_list">
-        <li><span>E-mail:</span> {{ object.email }}</li>
-        <li><span>Роль:</span> {{ object.role}}</li>
-      </ul>
-      <a class="btn_list" href="{% url 'users:profile_all_user' object.pk %}">Подробнее</a>
-      {% if object.pk != 1 %}
-      <a class="btn_list_delete" href="{% url 'users:delete_user' object.pk %}">Удаление</a>
-      {% endif %}
+        <h3>{{ object.first_name }} {{ object.last_name }}</h3>
+        <ul class="ul_list">
+            <li><span>E-mail:</span> {{ object.email }}</li>
+            <li><span>Роль:</span> {{ object.role}}</li>
+        </ul>
+        <a class="btn_list" href="{% url 'users:profile_all_user' object.pk %}">Подробнее</a>
+        {% if object.pk != 1 %}
+        <a class="btn_list_delete" href="{% url 'users:delete_user' object.pk %}">Удаление</a>
+        {% endif %}
+        {% if object.is_active == False %}
+        <span style="color: red; text-align: center;">Не активен</span>
+        {% endif %}
     </div>
-  </div>
+</div>
 
