@@ -3,8 +3,7 @@ from .models import User
 
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
-from django.forms import ModelForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 
 from users.validators import validate_password
 
@@ -37,42 +36,6 @@ class UserForm(StyleFromMixin, forms.ModelForm):
                   'phone', 'telegram', 'avatar', 'role', 'is_active',)
 
 
-#
-
-# class UserLoginForm(ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ('email', 'password')
-#         widgets = {
-#             'email': forms.TextInput(attrs={'class': 'form-control'}),
-#             'password': forms.PasswordInput(attrs={
-#                 'class': 'form-control',
-#                 'placeholder': " Password"
-#             }),
-#         }
-
-
-# class UserLoginForm(AuthenticationForm):
-#     email = forms.EmailField(
-#         max_length=150,
-#         label='Имя пользователя',
-#         widget=forms.TextInput(attrs={
-#             'class': 'form-control',
-#             'placeholder': 'Введите имя пользователя'
-#         })
-#     )
-#     password = forms.CharField(
-#         max_length=128,
-#         label='Пароль',
-#         widget=forms.PasswordInput(attrs={
-#         'class': 'form-control',
-#         'placeholder': 'Введите пароль'
-#         })
-#         )
-#
-#     class Meta:
-#         model = User
-#         fields = ['email', 'password']
 class UserCreateForm(StyleFromMixin, UserCreationForm):
     """ Форма для создания нового пользователя."""
 
