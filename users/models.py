@@ -8,9 +8,9 @@ NULLABLE ={'blank': True, 'null': True}
 
 class UserRoles(models.TextChoices):
     """ Роли пользователь """
-    ADMIN = 'admin', _('admin')
-    MODERATOR = 'moderator', _('moderator')
-    USER = 'user', _('user')
+    ADMIN = 'admin', _('Администратор')
+    MODERATOR = 'moderator', _('Модератор')
+    USER = 'user', _('Пользователь')
 
 class User(AbstractUser):
     """Модель пользователя с полями email, телефон и Telegram username."""
