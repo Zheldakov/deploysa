@@ -1,0 +1,19 @@
+{% load my_tags %}
+<div class="block_list">
+    <div class="image_list_block" style="background-image: url({{ object.photo|technic_media }})">
+    </div>
+
+    <div class="text_list_block">
+        <ul class="ul_list">
+            <li><span style="font-weight: bold;font-size: larger;"> {{ object.name }}</span></li>
+            <li><span>Гос.номер:</span> {{ object.number}}</li>
+            <li><span>Тип:</span> {{ object.type}}</li>
+            <li><span>Отделение:</span><br> {{ object.department}}</li>
+        </ul>
+        <a class="btn_list" href="{% url 'users:profile_all_user' object.pk %}">Подробнее</a>
+        {% if object.is_active == False %}
+        <span style="color: red; text-align: center;">Не активен</span>
+        {% endif %}
+    </div>
+</div>
+

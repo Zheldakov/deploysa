@@ -10,7 +10,7 @@
             <li><span>Роль:</span> {{ object.role}}</li>
         </ul>
         <a class="btn_list" href="{% url 'users:profile_all_user' object.pk %}">Подробнее</a>
-        {% if object.pk != 1 %}
+        {% if object.is_superuser == False %}
         <a class="btn_list_delete" href="{% url 'users:delete_user' object.pk %}">Удаление</a>
         {% endif %}
         {% if object.is_active == False %}

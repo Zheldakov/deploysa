@@ -12,38 +12,37 @@
     <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
     <title>C&A: {{ title }}</title>
 </head>
-
 <body>
 <div class="logo">
     <div class="left_logo">
         <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;">
     </div>
-
     <div class="right_logo">
         <div class="text_logo">
             <div class="user_ava" style="background-image: url({{ request.user.avatar|user_media }})">
-
             </div>
             <div class="user_data">
                 Имя: {{request.user.first_name}}<br>
                 E-mail: {{request.user.email}}<br>
-
             </div>
         </div>
         <div class="menu">
             <div class="navbar">
                 <a href="#">Главная</a>
                 <a href="#">Новости</a>
-                <a href="#">Техника</a>
+                <a href="{% url 'technic:technic_list' %}">Техника</a>
                 <div class="dropdown">
                     <button class="dropbtn">Инструменты</button>
                     <div class="dropdown-content">
                         {% if request.user.role == "admin" %}
                         <a href="//localhost:8000/admin_panel/">Админка</a>
-                        <a href="{% url 'users:users_list' %}">Пользователи</a>
                         {% endif %}
-                        <a href="#">Ссылка 2</a>
-                        <a href="#">Ссылка 3</a>
+                        {% if request.user.role == "admin" or request.user.role == "moderator" %}
+                        <a href="{% url 'users:users_list' %}">Пользователи</a>
+                        <a href="{% url 'users:create_user' %}">Добавить<br>пользователя</a>
+                        {% endif %}
+                        <a href="{% url 'technic:department_list' %}">Отделения</a>
+                        <a href="{% url 'technic:type_list' %}">Тип техники</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -58,14 +57,11 @@
         </div>
     </div>
 </div>
-
 <div class="conteiner">
     <div class="content">
         {% block content %}
-
         {% endblock %}
     </div>
-
     <div class="footer">
         <div align="center">
             &#9733; This is my private "PET-project". Welcome my <a href="https://github.com/Zheldakov" target="_blank">github</a>
