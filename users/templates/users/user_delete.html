@@ -1,0 +1,19 @@
+{% extends 'technic/base.html' %}
+{% block content %}
+<div class="content_form">
+    <div class="header_form">{{ title }}</div>
+    <div class="body_form">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form_form">
+                Вы хотите удалить пользователя {{ object.first_name}} {{ object.last_name}}
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="button_form">
+                <button type="submit" class="btn_enter">Удаление</button>
+                <a href="{% url 'users:users_list'%}" class="btn_esc">Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

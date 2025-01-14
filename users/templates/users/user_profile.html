@@ -1,0 +1,12 @@
+{% extends 'technic/base.html' %}
+{% block content %}
+<div class="content_form">
+    <div class="header_form">{{ title }}</div>
+    <div class="body_form">{% include 'users/includes/inc_user_profile.html' with object=object %}
+        <div class="button_form">
+            <a href="{% url 'users:update_user' %}" class="btn_enter">Редактировать</a>
+            <a href="{% url 'technic:technic_list' %}" class="btn_esc">Назад</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
