@@ -2,9 +2,10 @@
 {% load my_tags %}
 {% block content %}
 <div class="container">
+    <a href="{% url "technic:type_create" %}" class="btn_list btn_list_high">Создать "Тип техники"</a>
     <div class="conteiner_list">
         {% for object in object_list %}
-        {% include 'technic/includes/inc_dep_type_card.html' with object=object %}
+        {% include 'technic/includes/inc_type_card.html' with object=object %}
         {% endfor %}
     </div>
     {% include 'users/includes/inc_pagination.html' %}
