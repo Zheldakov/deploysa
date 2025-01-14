@@ -36,7 +36,7 @@ def user_login_view(request):
     context = {
         'form': form,
         'user': confirmation}
-    return render(request, 'users/login_user.html', context)
+    return render(request, 'users/user_login.html', context)
 
 
 def user_logout_view(request):
@@ -51,14 +51,14 @@ class UserCreateView(CreateView):
     model = User
     form_class = UserCreateForm
     success_url = reverse_lazy('users:users_list')
-    template_name = 'users/create_user.html'
+    template_name = 'users/user_create.html'
 
 
 class UserProfileView(DetailView):
     """ Просмотр профиля пользователя."""
     model = User
     # form_class = UserForm
-    template_name = 'users/profile_user.html'
+    template_name = 'users/user_profile.html'
     extra_context = {
         'title': f'Профиль пользователя'
     }
@@ -71,7 +71,7 @@ class UserUpdateView(UpdateView):
     """ Изменение профиля пользователя."""
     model = User
     form_class = UserForm
-    template_name = 'users/update_user.html'
+    template_name = 'users/user_update.html'
     success_url = reverse_lazy('users:profile_user')
     extra_context = {
         'title': f'Редактирование профиля'
@@ -85,7 +85,7 @@ class UserUpdateView(UpdateView):
 class UserPasswordChangeView(PasswordChangeView):
     """ Изменение пароля пользователя."""
     form_class = UserPasswordChangeForm
-    template_name = 'users/change_password.html'
+    template_name = 'users/password_change.html'
     success_url = reverse_lazy('technic:technic_list')
     extra_context = {
         'title': f'Редактирование пароля'
@@ -103,7 +103,7 @@ class UserListView(LoginRequiredMixin, ListView):
     """ Список всех пользователей."""
     model = User
     paginate_by = 6
-    template_name = 'users/all_users.html'
+    template_name = 'users/users_all.html'
     extra_context = {
         'title': f'Все пользователи'
     }
@@ -112,7 +112,7 @@ class UserListView(LoginRequiredMixin, ListView):
 class AllUserProfileView(DetailView):
     """ Просмотр профиля других пользователей."""
     model = User
-    template_name = 'users/profile_all_user.html'
+    template_name = 'users/user_profile_all.html'
     extra_context = {
         'title': f'Профиль пользователя'
     }
@@ -122,7 +122,7 @@ class ALLUserUpdateView(UpdateView):
     """ Изменение профиля других пользователей."""
     model = User
     form_class = UserForm
-    template_name = 'users/update_all_user.html'
+    template_name = 'users/user_update_all.html'
     extra_context = {
         'title': f'Редактирование профиля'
     }
@@ -135,7 +135,7 @@ class ALLUserUpdateView(UpdateView):
 class UserDeleteView(PermissionRequiredMixin, DeleteView):
     """ Страница удаления пользователя."""
     model = User
-    template_name = 'users/delete_user.html'
+    template_name = 'users/user_delete.html'
     # Переходим на страницу со списком питомцев после удаления
     success_url = reverse_lazy('users:users_list')
     permission_required = 'users.delete_user'
