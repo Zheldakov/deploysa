@@ -1,20 +1,10 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
-
-from django.shortcuts import reverse, render, redirect
-from django.views.generic import ListView
-
+from technic.forms import DepartmentForm, TypeTechnicForm
 from technic.models import Technic, TypeTechnic, Department
 
-
-# def technic_list_view(request):
-#     """ Показывает страницу со списком всей техники."""
-#     user = request.user
-#     context = {
-#         'title': "Вся техника",
-#         'user_name': user.first_name,
-#         'user_email': user.email,
-#     }
-#     return render(request, 'technic/technic_list.html', context)  # тестовый вариант
 
 class TechnicListView(ListView):
     """ Список всей техники."""
@@ -26,25 +16,85 @@ class TechnicListView(ListView):
     }
 
 
-# class TypeListView(ListView):
-#     """ Показывает страницу с информацией о техники определенного типа."""
-#     model = TypeTechnic
-#     template_name = 'technic/type_list.html'
-#
-#     def get_queryset(self):
-#         # Фильтр показывает только активную определенного типа технику
-#         queryset = super().get_queryset().filter(
-#             typetechnic_id=self.kwargs.get('pk'), is_active=True
-#         )
-#         return queryset
-#
 class DepartmentListView(ListView):
     """ Показывает страницу с информацией о техники определенного подразделения"""
     model = Department
-    template_name = 'technic/dep_type_list.html'
+    template_name = 'technic/dep_list.html'
+    extra_context = {
+        'title': f'Подразделения'
+    }
 
 
 class TypeListView(ListView):
     """ Показывает страницу с информацией о техники определенного типа"""
     model = TypeTechnic
-    template_name = 'technic/dep_type_list.html'
+    template_name = 'technic/type_list.html'
+    extra_context = {
+        'title': f'Типы техники'
+    }
+
+
+class DepartmentCreateView(CreateView):
+    """ Создание подразделения"""
+    model = Department
+    form_class = DepartmentForm
+    success_url = reverse_lazy('technic:department_list')
+    template_name = 'technic/dep_create.html'
+    extra_context = {
+        'title': f'Создание подразделения'
+    }
+
+
+class DepartmentUpdateView(UpdateView):
+    """ Изменение подразделения"""
+    model = Department
+    form_class = DepartmentForm
+    template_name = 'technic/dep_update.html'
+    success_url = reverse_lazy('technic:department_list')
+    extra_context = {
+        'title': f'Редактирование подразделения'
+    }
+
+
+class DepartmentDeleteView(PermissionRequiredMixin, DeleteView):
+    """ Страница удаления подразделения."""
+    model = Department
+    template_name = 'technic/dep_delete.html'
+    success_url = reverse_lazy('technic:department_list')
+    permission_required = 'technic.delete_department'
+    extra_context = {
+        'title': f'Удаление подразделения'
+    }
+
+
+class TypeTechnicCreateView(CreateView):
+    """ Создание типа техники"""
+    model = TypeTechnic
+    form_class = TypeTechnicForm
+    success_url = reverse_lazy('technic:type_list')
+    template_name = 'technic/type_create.html'
+    extra_context = {
+        'title': f'Создание техники'
+    }
+
+
+class TypeTechnicUpdateView(UpdateView):
+    """ Изменение типа техники."""
+    model = TypeTechnic
+    form_class = TypeTechnicForm
+    template_name = 'technic/type_update.html'
+    success_url = reverse_lazy('technic:type_list')
+    extra_context = {
+        'title': f'Редактирование подразделения'
+    }
+
+
+class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
+    """ Страница удаления типа пользователя."""
+    model = TypeTechnic
+    template_name = 'technic/type_delete.html'
+    success_url = reverse_lazy('technic:type_list')
+    permission_required = 'technic.delete_typetechnic'
+    extra_context = {
+        'title': f'Удаление типа техники'
+    }
