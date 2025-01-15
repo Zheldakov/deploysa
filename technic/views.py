@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
+from django.shortcuts import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
-from technic.forms import DepartmentForm, TypeTechnicForm
+from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm
 from technic.models import Technic, TypeTechnic, Department
 
 
@@ -21,6 +22,28 @@ class TechnicDetailView(DetailView):
     template_name = 'technic/technic_detail.html'
     extra_context = {
         'title': f'Детальная информация'
+    }
+
+class TechnicUpdateView(UpdateView):
+    """ Изменение техники."""
+    model = Technic
+    form_class = TechnicForm
+    template_name = 'technic/Technic_update.html'
+    extra_context = {
+        'title': f'Редактирование техники'
+    }
+    def get_success_url(self):
+        # Переходим на страницу детальной информации по технике после редактирования
+        return reverse('technic:technic_detail', args=[self.kwargs.get('pk')])
+
+class TechnicDeleteView(PermissionRequiredMixin, DeleteView):
+    """ Страница удаления техники."""
+    model = Technic
+    template_name = 'technic/technic_delete.html'
+    success_url = reverse_lazy('technic:technic_list')
+    permission_required = 'technic.delete_technic'
+    extra_context = {
+        'title': f'Удаление техники'
     }
 
 class DepartmentListView(ListView):
