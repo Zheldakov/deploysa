@@ -74,7 +74,7 @@ class TypeTechnicCreateView(CreateView):
     success_url = reverse_lazy('technic:type_list')
     template_name = 'technic/type_create.html'
     extra_context = {
-        'title': f'Создание техники'
+        'title': f'Создание типа техники'
     }
 
 
