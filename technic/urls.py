@@ -9,7 +9,7 @@ app_name = TechnicConfig.name
 
 urlpatterns = [
     path('list/', TechnicListView.as_view(), name="technic_list"),  # url список всей техники
-    path('detail/', TechnicDetailView.as_view(), name="technic_detail"),  # url список всей техники
+    path('detail/<int:pk>', TechnicDetailView.as_view(), name="technic_detail"),  # url список всей техники
     path('type/', TypeListView.as_view(), name="type_list"),  # url список всех типов техники
     path('department/', DepartmentListView.as_view(), name="department_list"),  # url список всех подразделений
     path('type/create/', TypeTechnicCreateView.as_view(), name='type_create'), # создание типов техники

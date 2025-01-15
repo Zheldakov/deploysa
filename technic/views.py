@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
 from technic.forms import DepartmentForm, TypeTechnicForm
 from technic.models import Technic, TypeTechnic, Department
@@ -15,6 +15,13 @@ class TechnicListView(ListView):
         'title': f'Техника'
     }
 
+class TechnicDetailView(DetailView):
+    """ Просмотр детальной информации по техники."""
+    model = Technic
+    template_name = 'technic/technic_detail.html'
+    extra_context = {
+        'title': f'Детальная информация'
+    }
 
 class DepartmentListView(ListView):
     """ Показывает страницу с информацией о техники определенного подразделения"""
