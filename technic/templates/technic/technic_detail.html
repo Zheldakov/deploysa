@@ -1,0 +1,28 @@
+{% extends 'technic/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="content_form">
+    <div class="header_form">{{ title }}</div>
+    <div class="body_form">
+    <div class="form_form_profile">
+        <div class="image_form" style="background-image: url({{ technic.photo|technic_media }})">
+        </div>
+    </div>
+    <div class="user_text">
+        <span><div class="label_user">Наименование:</div> <div>{{object.name}}</div></span>
+        <span><div class="label_user">Гос.номер:</div> <div>{{object.number|default:"не указано"}}</div></span>
+        <span><div class="label_user">Тип:</div> <div>{{object.type}}</div></span>
+        <span><div class="label_user">Инв.номер</div> <div>{{object.invnumber|default:"не указано"}}</div></span>
+        <span><div class="label_user">IMEI:</div> <div>{{object.imei|default:"не указано"}}</div></span>
+        <span><div class="label_user">Подразделение:</div> <div>{{object.department|default:"не указано"}}</div></span>
+    </div>
+    <div class="button_form">
+        {% if request.user.role == "admin" or request.user.role == "moderator" %}
+        <a href="{% url 'technic:technic_update' object.pk %}" class="btn_enter">Редактировать</a>
+        <a href="{% url 'technic:technic_delete' object.pk%}" class="btn_enter">Удалить</a>
+        {% endif %}
+        <a href="{% url 'technic:technic_list' %}" class="btn_esc">Назад</a>
+    </div>
+</div>
+</div>
+{% endblock %}
