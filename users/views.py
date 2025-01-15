@@ -52,6 +52,9 @@ class UserCreateView(CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('users:users_list')
     template_name = 'users/user_create.html'
+    extra_context = {
+        'title': f'Добавление пользователя'
+    }
 
 
 class UserProfileView(DetailView):
@@ -139,3 +142,6 @@ class UserDeleteView(PermissionRequiredMixin, DeleteView):
     # Переходим на страницу со списком питомцев после удаления
     success_url = reverse_lazy('users:users_list')
     permission_required = 'users.delete_user'
+    extra_context = {
+        'title': f'Удаление пользователя'
+    }
