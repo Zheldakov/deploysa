@@ -9,15 +9,16 @@
         </div>
 
         <div class="block_data_technic" style="padding: 0;">
-            
-           
-                <div class="text_block_technic_top">
-                    <span>Отделение: {{ object.department}}</span>
-                    <span>Тип: {{ object.type}}</span> 
-                </div>
 
-            
+
+            <div class="text_block_technic_top">
+                <span>Отделение: {{ object.department}}</span>
+                <span>Тип: {{ object.type}}</span>
+            </div>
+
+
             <div class="btn_block_technic">
+                <a class="btn_list btn_technic" href="{% url 'technic:technic_service_list' object.pk %}">Сервис</a>
                 <a class="btn_list btn_technic" href="{% url 'technic:technic_detail' object.pk %}">Подробнее</a>
             </div>
         </div>

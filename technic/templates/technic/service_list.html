@@ -1,0 +1,15 @@
+{% extends 'technic/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container_service">
+  <div class="header_form">Работы проведенные на технике</div>
+  <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+  <div class="conteiner_list_technic">
+    {% for object in object_list %}
+    {% include 'technic/includes/inc_service_card.html' with object=object %}
+    {% endfor %}
+</div>
+{% include 'users/includes/inc_pagination.html' %}
+  <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+</div>
+{% endblock %}

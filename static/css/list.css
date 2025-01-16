@@ -180,3 +180,26 @@ text-align: center;
 .top_bottom_list a{
     width: 15%;
 }
+
+/* service_ */
+.container_service{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.serv_block_technic_left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 5px;
+}
+.serv_block_technic_right{
+    width: 60%;
+    padding: 0 0 0 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-left: 1px solid rgba(0, 0, 0, 0.323);
+}

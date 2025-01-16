@@ -1,16 +1,12 @@
 {% extends 'technic/base.html' %}
 {% block content %}
 <div class="content_form">
-    <div class="header_form">{{ title }}</div>
+    <div class="header_form"> Сервисные работы на {{ object.name }} {{ object.number }}</div>
     <div class="body_form">
         <form method="post" enctype="multipart/form-data">
-            <div class="form_form">
+            <div class="form_form" style="display: none;">
                 {% csrf_token %}
                 {{ form.as_p }}
-            </div>
-            <div class="button_form">
-                <button type="submit" class="btn_enter">Сохранить</button>
-                <a href="{% url 'technic:technic_detail' object.pk %}" class="btn_esc">Назад</a>
             </div>
             <div class="card-body">
                 {{ formset.management_form }}
@@ -20,6 +16,13 @@
                 <hr>
                 {% endif %}
                 {% endfor %}
+            </div>
+            <div class="button_form">
+                <button type="submit" class="btn_enter">Сохранить</button>
+                <a href="{% url 'technic:technic_detail' object.pk %}" class="btn_esc">Назад</a>
+                {% comment %}
+                <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+                {% endcomment %}
             </div>
         </form>
     </div>

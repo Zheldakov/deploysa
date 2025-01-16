@@ -17,6 +17,7 @@
         <span><div class="label_user">Подразделение:</div> <div>{{object.department|default:"не указано"}}</div></span>
     </div>
     <div class="button_form">
+        <a class="btn_list btn_technic" href="{% url 'technic:technic_service_update' object.pk %}">Сервис</a>
         <a href="{% url 'technic:technic_update' object.pk %}" class="btn_enter">Редактировать</a>
         {% if request.user.role == "admin" or request.user.role == "moderator" %}
         <a href="{% url 'technic:technic_delete' object.pk%}" class="btn_esc">Удалить</a>
