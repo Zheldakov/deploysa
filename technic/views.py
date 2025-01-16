@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.db.models import Q
+from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.shortcuts import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
-from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm
-from technic.models import Technic, TypeTechnic, Department
+from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm, ServiceForm
+from technic.models import Technic, TypeTechnic, Department, Service
 
 
 class TechnicListView(ListView):
@@ -16,6 +17,7 @@ class TechnicListView(ListView):
     extra_context = {
         'title': f'Техника'
     }
+
 
 class TechnicCreateView(CreateView):
     """ Создание техники"""
@@ -36,17 +38,49 @@ class TechnicDetailView(DetailView):
         'title': f'Детальная информация'
     }
 
+
 class TechnicUpdateView(UpdateView):
     """ Изменение техники."""
     model = Technic
     form_class = TechnicForm
-    template_name = 'technic/Technic_update.html'
-    extra_context = {
-        'title': f'Редактирование техники'
-    }
+    template_name = 'technic/technic_update.html'
+
     def get_success_url(self):
         # Переходим на страницу детальной информации по технике после редактирования
         return reverse('technic:technic_detail', args=[self.kwargs.get('pk')])
+
+class TechnicServiceUpdateView(UpdateView):
+    """ Странина сервиса техники"""
+    model = Technic
+    form_class = TechnicForm
+    template_name = 'technic/technic_service_update.html'
+
+    def get_success_url(self):
+        # Переходим на страницу детальной информации по технике после редактирования
+        return reverse('technic:technic_service_update', args=[self.kwargs.get('pk')])
+
+    def get_context_data(self, **kwargs):
+        # Добавляем форму для редактирования родителей питомца
+        contex_data = super().get_context_data(**kwargs)
+        ServiceFormset = inlineformset_factory(Technic, Service, form=ServiceForm, extra=1)
+        if self.request.method == 'POST':
+            formset = ServiceFormset(self.request.POST, instance=self.object)
+        else:
+            formset = ServiceFormset(instance=self.object)
+        contex_data['formset'] = formset
+        contex_data['title'] = f'Редактирование техники'
+        return contex_data
+
+    def form_valid(self, form):
+        # форма валидации для подставления сервиса
+        contex_data = self.get_context_data()
+        formset = contex_data['formset']
+        self.object = form.save()
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+        return super().form_valid(form)
+
 
 class TechnicDeleteView(PermissionRequiredMixin, DeleteView):
     """ Страница удаления техники."""
@@ -57,6 +91,7 @@ class TechnicDeleteView(PermissionRequiredMixin, DeleteView):
     extra_context = {
         'title': f'Удаление техники'
     }
+
 
 class DepartmentListView(ListView):
     """ Показывает страницу с информацией о техники определенного подразделения"""
@@ -141,6 +176,7 @@ class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
         'title': f'Удаление типа техники'
     }
 
+
 class TechnicListFilterDepartmentView(ListView):
     """ Список всей техники определенного подразделения."""
     model = Technic
@@ -149,12 +185,14 @@ class TechnicListFilterDepartmentView(ListView):
     extra_context = {
         'title': f'Техника'
     }
+
     def get_queryset(self):
         # Фильтр показывает только технику определенного подразделения
         queryset = super().get_queryset().filter(
             department_id=self.kwargs.get('pk')
         )
         return queryset
+
 
 class TechnicListFilterTypeTechnicView(ListView):
     """ Список всей техники определенного типа."""
@@ -164,12 +202,14 @@ class TechnicListFilterTypeTechnicView(ListView):
     extra_context = {
         'title': f'Техника'
     }
+
     def get_queryset(self):
         # Фильтр показывает только технику определенного типа
         queryset = super().get_queryset().filter(
             type_id=self.kwargs.get('pk')
         )
         return queryset
+
 
 class TechnicSearchListView(LoginRequiredMixin, ListView):
     """ Показывает страницу с результатами поиска техники по гос. Номеру."""
@@ -178,10 +218,11 @@ class TechnicSearchListView(LoginRequiredMixin, ListView):
     extra_context = {
         'title': 'Результаты поискового запроса',
     }
+
     def get_queryset(self):
         query = self.request.GET.get('q')
 
-        object_list =Technic.objects.filter(Q(number__icontains=query))
+        object_list = Technic.objects.filter(Q(number__icontains=query))
         if object_list.exists() == False:
             print("Не найден по гос.номеру")
             object_list = Technic.objects.filter(Q(name__icontains=query))
@@ -191,6 +232,20 @@ class TechnicSearchListView(LoginRequiredMixin, ListView):
         if object_list.exists() == False:
             print("Не найден по IMEI")
 
-
         print(object_list)
         return object_list
+
+class ServiceFilterTechnicView(ListView):
+    """ Список работ проведенных на технике"""
+    model = Service
+    paginate_by = 6
+    template_name = 'technic/service_list.html'
+    extra_context = {
+        'title': f' Список работ'
+    }
+    def get_queryset(self):
+        # Фильтр показывает только сервисы с определенным id техники
+        queryset = super().get_queryset().filter(
+            technic_id=self.kwargs.get('pk')
+        )
+        return queryset
