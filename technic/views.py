@@ -185,11 +185,12 @@ class TechnicSearchListView(LoginRequiredMixin, ListView):
         if object_list.exists() == False:
             print("Не найден по гос.номеру")
             object_list = Technic.objects.filter(Q(name__icontains=query))
-        elif object_list.exists() == False:
+        if object_list.exists() == False:
             print("Не найден по наименованию")
             object_list = Technic.objects.filter(Q(imei__icontains=query))
-        elif object_list.exists() == False:
+        if object_list.exists() == False:
             print("Не найден по IMEI")
+
 
         print(object_list)
         return object_list
