@@ -6,8 +6,9 @@
             <li><span style="font-weight: bold;">Описание:</span> {{ object.description}}</li>
         </ul>
         <div class ="btn_block_dt">
-        <a class="btn_list" href="{% url 'technic:type_update' object.pk %}">Редактирование</a>
+        <a class="btn_list" href="">Техника</a>
         {% if request.user.role == "admin" or request.user.role == "moderator" %}
+        <a class="btn_list" href="{% url 'technic:type_update' object.pk %}">Редактирование</a>
         <a class="btn_list_delete" href="{% url 'technic:type_delete' object.pk %}">Удаление</a>
         {% endif %}
         {% if object.is_active == False %}

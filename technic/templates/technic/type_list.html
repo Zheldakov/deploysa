@@ -2,7 +2,9 @@
 {% load my_tags %}
 {% block content %}
 <div class="container">
+    {% if request.user.role == "admin" or request.user.role == "moderator" %}
     <a href="{% url "technic:type_create" %}" class="btn_list btn_list_high">Создать "Тип техники"</a>
+    {% endif %}
     <div class="conteiner_list">
         {% for object in object_list %}
         {% include 'technic/includes/inc_type_card.html' with object=object %}

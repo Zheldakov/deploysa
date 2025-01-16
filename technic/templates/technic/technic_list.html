@@ -2,9 +2,14 @@
 {% load my_tags %}
 {% block content %}
 <div class="container">
+    <div class="top_bottom_list">
+        <a href="{% url "technic:technic_create" %}" class="btn_list btn_list_high">Добавить Технику</a>
+        <a href="{% url 'technic:department_list' %}" class="btn_list btn_list_high">Отделения</a>
+        <a href="{% url 'technic:type_list' %}" class="btn_list btn_list_high">Типы техники</a>
+    </div>
     <div class="conteiner_list_technic">
         {% for object in object_list %}
-        {% include 'technic/includes/inc_tecnhnic_card.html' with object=object %}
+        {% include 'technic/includes/inc_technic_card.html' with object=object %}
         {% endfor %}
     </div>
     {% include 'users/includes/inc_pagination.html' %}

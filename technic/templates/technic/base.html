@@ -32,7 +32,9 @@
                 <a href="#">Новости</a>
                 <a href="{% url 'technic:technic_list' %}">Техника</a>
                 <div class="dropdown">
+                    {% if request.user.role == "admin" or request.user.role == "moderator" %}
                     <button class="dropbtn">Инструменты</button>
+                    {% endif %}
                     <div class="dropdown-content">
                         {% if request.user.role == "admin" %}
                         <a href="//localhost:8000/admin_panel/">Админка</a>
