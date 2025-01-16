@@ -36,8 +36,8 @@ class Technic(models.Model):
     type = models.ForeignKey(TypeTechnic, on_delete=models.CASCADE, verbose_name='Тип')  # Тип техники
     photo = models.ImageField(upload_to='technic/', verbose_name='Изображение', **NULLABLE)  # Фотография техники
     number = models.CharField(max_length=8, verbose_name='Гос. номер', **NULLABLE)  # Государственный номер
-    invnumber = models.IntegerField(verbose_name="Инвентарный номер", **NULLABLE)  # Инвентарный номер
-    imei = models.IntegerField(verbose_name='IMEI', **NULLABLE)  # номер IMEI
+    invnumber = models.BigIntegerField(verbose_name="Инвентарный номер", **NULLABLE)  # Инвентарный номер
+    imei = models.BigIntegerField(verbose_name='IMEI', **NULLABLE)  # номер IMEI
     department = models.ForeignKey(Department, on_delete=models.CASCADE,
                                    verbose_name='Подразделение')  # Подразделение техники
 
