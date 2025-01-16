@@ -3,12 +3,15 @@ from django.urls import path
 from technic.apps import TechnicConfig
 from technic.views import TechnicListView, DepartmentListView, TypeListView, TypeTechnicUpdateView, \
     DepartmentUpdateView, TypeTechnicDeleteView, DepartmentDeleteView, DepartmentCreateView, TypeTechnicCreateView, \
-    TechnicDetailView, TechnicUpdateView, TechnicDeleteView, TechnicCreateView
+    TechnicDetailView, TechnicUpdateView, TechnicDeleteView, TechnicCreateView, TechnicListFilterDepartmentView, \
+    TechnicListFilterTypeTechnicView
 
 app_name = TechnicConfig.name
 
 urlpatterns = [
     path('list/', TechnicListView.as_view(), name="technic_list"),  # список всей техники
+    path('department/<int:pk>/technic/', TechnicListFilterDepartmentView.as_view(), name='department_technic'), # техника определенного подразделения
+    path('type/<int:pk>/technic/', TechnicListFilterTypeTechnicView.as_view(), name='type_technic'), # техника определенного типа
     path('create/', TechnicCreateView.as_view(), name="technic_create"),  # добавление техники
     path('detail/<int:pk>', TechnicDetailView.as_view(), name="technic_detail"),  # детальная информация по техники
     path('update/<int:pk>', TechnicUpdateView.as_view(), name="technic_update"),  # редактирование техники
