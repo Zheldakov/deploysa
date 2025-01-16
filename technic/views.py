@@ -180,5 +180,16 @@ class TechnicSearchListView(LoginRequiredMixin, ListView):
     }
     def get_queryset(self):
         query = self.request.GET.get('q')
+
         object_list =Technic.objects.filter(Q(number__icontains=query))
+        if object_list.exists() == False:
+            print("Не найден по гос.номеру")
+            object_list = Technic.objects.filter(Q(name__icontains=query))
+        elif object_list.exists() == False:
+            print("Не найден по наименованию")
+            object_list = Technic.objects.filter(Q(imei__icontains=query))
+        elif object_list.exists() == False:
+            print("Не найден по IMEI")
+
+        print(object_list)
         return object_list
