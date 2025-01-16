@@ -140,18 +140,32 @@ class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
         'title': f'Удаление типа техники'
     }
 
-# class DepartmentListFilterView(ListView):
-#     """ Показывает страницу с информацией о техники определенного подразделения (для фильтрации)"""
-#     model = Department
-#     template_name = 'technic/dep_f_list.html'
-#     extra_context = {
-#         'title': f'Подразделения'
-#     }
-#
-# class TypeListFilterView(ListView):
-#     """ Показывает страницу с информацией о техники определенного типа (для фильтрации)"""
-#     model = TypeTechnic
-#     template_name = 'technic/type_f_list.html'
-#     extra_context = {
-#         'title': f'Типы техники'
-#     }
+class TechnicListFilterDepartmentView(ListView):
+    """ Список всей техники определенного подразделения."""
+    model = Technic
+    paginate_by = 6
+    template_name = 'technic/technic_list.html'
+    extra_context = {
+        'title': f'Техника {{ object.department }}'
+    }
+    def get_queryset(self):
+        # Фильтр показывает только технику определенного подразделения
+        queryset = super().get_queryset().filter(
+            department_id=self.kwargs.get('pk')
+        )
+        return queryset
+
+class TechnicListFilterTypeTechnicView(ListView):
+    """ Список всей техники определенного типа."""
+    model = Technic
+    paginate_by = 6
+    template_name = 'technic/technic_list.html'
+    extra_context = {
+        'title': f'Техника {{ object.type }}'
+    }
+    def get_queryset(self):
+        # Фильтр показывает только технику определенного типа
+        queryset = super().get_queryset().filter(
+            type_id=self.kwargs.get('pk')
+        )
+        return queryset
