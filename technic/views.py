@@ -146,7 +146,7 @@ class TechnicListFilterDepartmentView(ListView):
     paginate_by = 6
     template_name = 'technic/technic_list.html'
     extra_context = {
-        'title': f'Техника {{ object.department }}'
+        'title': f'Техника'
     }
     def get_queryset(self):
         # Фильтр показывает только технику определенного подразделения
@@ -161,7 +161,7 @@ class TechnicListFilterTypeTechnicView(ListView):
     paginate_by = 6
     template_name = 'technic/technic_list.html'
     extra_context = {
-        'title': f'Техника {{ object.type }}'
+        'title': f'Техника'
     }
     def get_queryset(self):
         # Фильтр показывает только технику определенного типа
