@@ -1,4 +1,5 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.shortcuts import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
@@ -169,3 +170,15 @@ class TechnicListFilterTypeTechnicView(ListView):
             type_id=self.kwargs.get('pk')
         )
         return queryset
+
+class TechnicSearchListView(LoginRequiredMixin, ListView):
+    """ Показывает страницу с результатами поиска техники по гос. Номеру."""
+    model = Technic
+    template_name = 'technic/technic_list.html'
+    extra_context = {
+        'title': 'Результаты поискового запроса',
+    }
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list =Technic.objects.filter(Q(number__icontains=query))
+        return object_list

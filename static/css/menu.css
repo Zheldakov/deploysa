@@ -5,6 +5,7 @@ body {
 .navbar {
   display: flex;
   justify-content: end;
+  align-items: space-between;
   overflow: hidden;
   background-color: black;
 }
@@ -88,4 +89,26 @@ body {
 .navbar .exitbtn:hover{
   background-color: brown;
   color: white;
+}
+
+.search_box{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  /* align-items: end; */
+  padding: 5px;
+
+}
+.search_box form{
+  width:35% ;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+}
+.bottom_menu_box{
+  width: 60%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }

@@ -28,6 +28,10 @@
         </div>
         <div class="menu">
             <div class="navbar">
+                <div class="search_box">
+                {% include 'technic/includes/inc_search_field.html' %}
+                </div>
+                <div class="bottom_menu_box">
                 <a href="#">Главная</a>
                 <a href="#">Новости</a>
                 <a href="{% url 'technic:technic_list' %}">Техника</a>
@@ -54,7 +58,8 @@
                         <a href="{% url 'users:change_password_user' %}">Пароль</a>
                     </div>
                 </div>
-                <a href="{% url 'users:logout_user' %}" class="exitbtn">Выход</a>
+                <a href="{% url 'users:logout_user' %}" class="exitbtn" >Выход</a>
+                </div>
             </div>
         </div>
     </div>

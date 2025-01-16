@@ -4,7 +4,7 @@ from technic.apps import TechnicConfig
 from technic.views import TechnicListView, DepartmentListView, TypeListView, TypeTechnicUpdateView, \
     DepartmentUpdateView, TypeTechnicDeleteView, DepartmentDeleteView, DepartmentCreateView, TypeTechnicCreateView, \
     TechnicDetailView, TechnicUpdateView, TechnicDeleteView, TechnicCreateView, TechnicListFilterDepartmentView, \
-    TechnicListFilterTypeTechnicView
+    TechnicListFilterTypeTechnicView, TechnicSearchListView
 
 app_name = TechnicConfig.name
 
@@ -24,4 +24,5 @@ urlpatterns = [
     path('department/update/<int:pk>/', DepartmentUpdateView.as_view(), name='department_update'), # редактирование подразделений
     path('type/delete/<int:pk>/', TypeTechnicDeleteView.as_view(), name='type_delete'), # удаление типа техники
     path('department/delete/<int:pk>/', DepartmentDeleteView.as_view(), name='department_delete'), # удаление подразделений
+    path('number/search/', TechnicSearchListView.as_view(), name='technic_search'), # поиск техники по гос номеру
 ]
