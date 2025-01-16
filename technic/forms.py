@@ -1,5 +1,5 @@
 from django import forms
-from .models import Department, TypeTechnic, Technic
+from .models import Department, TypeTechnic, Technic, Service
 from users.forms import StyleFromMixin
 
 
@@ -24,4 +24,11 @@ class TechnicForm(StyleFromMixin, forms.ModelForm):
 
     class Meta:
         model = Technic
+        fields = '__all__'
+
+class ServiceForm(StyleFromMixin, forms.ModelForm):
+    """ Форма для тех. Обслуживания"""
+
+    class Meta:
+        model = Service
         fields = '__all__'
