@@ -16,6 +16,17 @@ class TechnicListView(ListView):
         'title': f'Техника'
     }
 
+class TechnicCreateView(CreateView):
+    """ Создание техники"""
+    model = Technic
+    form_class = TechnicForm
+    success_url = reverse_lazy('technic:technic_list')
+    template_name = 'technic/technic_create.html'
+    extra_context = {
+        'title': f'Добавление техники'
+    }
+
+
 class TechnicDetailView(DetailView):
     """ Просмотр детальной информации по техники."""
     model = Technic
@@ -128,3 +139,19 @@ class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
     extra_context = {
         'title': f'Удаление типа техники'
     }
+
+# class DepartmentListFilterView(ListView):
+#     """ Показывает страницу с информацией о техники определенного подразделения (для фильтрации)"""
+#     model = Department
+#     template_name = 'technic/dep_f_list.html'
+#     extra_context = {
+#         'title': f'Подразделения'
+#     }
+#
+# class TypeListFilterView(ListView):
+#     """ Показывает страницу с информацией о техники определенного типа (для фильтрации)"""
+#     model = TypeTechnic
+#     template_name = 'technic/type_f_list.html'
+#     extra_context = {
+#         'title': f'Типы техники'
+#     }
