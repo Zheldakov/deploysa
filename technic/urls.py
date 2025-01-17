@@ -26,5 +26,5 @@ urlpatterns = [
     path('department/delete/<int:pk>/', DepartmentDeleteView.as_view(), name='department_delete'), # удаление подразделений
     path('number/search/', TechnicSearchListView.as_view(), name='technic_search'), # поиск техники по гос номеру
     path('service/<int:pk>/', TechnicServiceUpdateView.as_view(), name='technic_service_update'), # сервис техники
-    path('/<int:pk>/service', ServiceFilterTechnicView.as_view(), name='technic_service_list'), # список сервисов по техники
+    path('<int:pk>/service/', ServiceFilterTechnicView.as_view(), name='technic_service_list'), # список сервисов по техники
 ]
