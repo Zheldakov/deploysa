@@ -252,6 +252,8 @@ class ServiceFilterTechnicView(ListView):
 
     def get_context_data(self, **kwargs):
         contex_data = super().get_context_data(**kwargs)
-        contex_data['name_t'] = self.object_list[0].technic
+        if self.object_list:
+            # если список объектов есть, тогда вписываем первый
+            contex_data['name_t'] = self.object_list[0].technic
         contex_data['title'] = f'Список работ на технике'
         return contex_data
