@@ -44,7 +44,7 @@ class Technic(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Активность")
 
     def __str__(self):
-        return f'{self.name} ({self.number})'  # техника в формате "Наименование техники (гос.Номер)"
+        return f'{self.name} {self.number}'  # техника в формате "Наименование техники (гос.Номер)"
 
     class Meta:
         verbose_name = 'Техника'
