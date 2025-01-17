@@ -49,6 +49,7 @@ class TechnicUpdateView(UpdateView):
         # Переходим на страницу детальной информации по технике после редактирования
         return reverse('technic:technic_detail', args=[self.kwargs.get('pk')])
 
+
 class TechnicServiceUpdateView(UpdateView):
     """ Странина сервиса техники"""
     model = Technic
@@ -235,12 +236,12 @@ class TechnicSearchListView(LoginRequiredMixin, ListView):
         print(object_list)
         return object_list
 
+
 class ServiceFilterTechnicView(ListView):
     """ Список работ проведенных на технике"""
     model = Service
     paginate_by = 6
     template_name = 'technic/service_list.html'
-
 
     def get_queryset(self):
         # Фильтр показывает только сервисы с определенным id техники
@@ -252,7 +253,5 @@ class ServiceFilterTechnicView(ListView):
     def get_context_data(self, **kwargs):
         contex_data = super().get_context_data(**kwargs)
         contex_data['name_t'] = self.object_list[0].technic
-        print(type(self.object_list[0]).technic)
         contex_data['title'] = f'Список работ на технике'
         return contex_data
-
