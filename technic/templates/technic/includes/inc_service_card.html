@@ -1,19 +1,3 @@
-{% comment %} {% load my_tags %}
-<div class="block_list_technic">
-    <div class="image_list_block_technic" style="background-image: url({{ object.photo|service_media }})">
-    </div>
-    <div class="line_block_technic">
-        <div class="serv_block_technic_left">
-            <span style="font-weight: bold;font-size: larger;"> {{ object.work }}</span>
-            <span>Дата: {{ object.date}}</span>
-        </div>
-        <div class="serv_block_technic_right">
-            <div class="text_block_technic_top">
-                <span>Описание: {{ object.description}}</span>
-            </div>
-        </div>
-    </div>
-</div> {% endcomment %}
 {% load my_tags %}
 <div class="block_list_technic">
     <div class="image_list_block_technic" style="background-image: url({{  object.photo|service_media }})">
