@@ -60,7 +60,7 @@ class TechnicServiceUpdateView(UpdateView):
         return reverse('technic:technic_service_update', args=[self.kwargs.get('pk')])
 
     def get_context_data(self, **kwargs):
-        # Добавляем форму для редактирования родителей питомца
+        # Добавляем форму для редактирования сервисных работ
         contex_data = super().get_context_data(**kwargs)
         ServiceFormset = inlineformset_factory(Technic, Service, form=ServiceForm, extra=1)
         if self.request.method == 'POST':
@@ -240,12 +240,19 @@ class ServiceFilterTechnicView(ListView):
     model = Service
     paginate_by = 6
     template_name = 'technic/service_list.html'
-    extra_context = {
-        'title': f' Список работ'
-    }
+
+
     def get_queryset(self):
         # Фильтр показывает только сервисы с определенным id техники
         queryset = super().get_queryset().filter(
             technic_id=self.kwargs.get('pk')
         )
         return queryset
+
+    def get_context_data(self, **kwargs):
+        contex_data = super().get_context_data(**kwargs)
+        contex_data['name_t'] = self.object_list[0].technic
+        print(type(self.object_list[0]).technic)
+        contex_data['title'] = f'Список работ на технике'
+        return contex_data
+
