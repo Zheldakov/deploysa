@@ -1,15 +1,40 @@
 {% extends 'technic/base.html' %}
-{% load my_tags %}
-{% block content %}
-<div class="container_service">
+{% comment %} <div class="container_service">
   <div class="header_form">{{ title }} {{ name_t }}</div>
   <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
   <div class="conteiner_list_technic">
     {% for object in object_list %}
-    {% include 'technic/includes/inc_service_card.html' with object=object %}
+    
     {% endfor %}
 </div>
 {% include 'users/includes/inc_pagination.html' %}
   <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+</div>
+{% endblock %} {% endcomment %}
+
+
+
+{% load my_tags %}
+{% block content %}
+<div class="container">
+  {% if name_t %}
+  <div class="header_form">{{ title }} {{ name_t }}</div>
+  {% else %}
+  <div class="header_form">Работы не проводились</div>
+  {% endif %}
+    <div class="top_bottom_list">
+      {% if name_t %}
+      <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+      {% endif %}
+    </div>
+    <div class="conteiner_list_technic">
+        {% for object in object_list %}
+        {% include 'technic/includes/inc_service_card.html' with object=object %}
+        {% endfor %}
+    </div>
+    {% include 'users/includes/inc_pagination.html' %}
+    <div class="top_bottom_list">
+      <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
+    </div>
 </div>
 {% endblock %}
