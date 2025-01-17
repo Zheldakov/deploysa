@@ -1,0 +1,15 @@
+{% extends 'technic/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container">
+    <div class="top_bottom_list">
+{#        <a href="{% url "news:news_create" %}" class="btn_list btn_list_high">Добавить новость</a>#}
+    </div>
+    <div class="conteiner_list_technic">
+        {% for object in object_list %}
+        {% include 'news/includes/inc_news_card.html' with object=object %}
+        {% endfor %}
+    </div>
+    {% include 'users/includes/inc_pagination.html' %}
+</div>
+{% endblock %}

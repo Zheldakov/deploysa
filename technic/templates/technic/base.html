@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="ico"n href="{% static 'image/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/base_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="bottom_menu_box">
                 <a href="#">Главная</a>
-                <a href="#">Новости</a>
+                <a href="{% url 'news:news_list' %}">Новости</a>
                 <a href="{% url 'technic:technic_list' %}">Техника</a>
                 <div class="dropdown">
                     {% if request.user.role == "admin" or request.user.role == "moderator" %}
