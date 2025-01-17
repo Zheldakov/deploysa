@@ -1,7 +1,7 @@
 from django.db import models
 
 # настройка полей, чтобы возможно было заполнить поля пустыми
-NULLABLE = {'blank': True, 'null': True}
+from users.models import NULLABLE
 
 
 class TypeTechnic(models.Model):
