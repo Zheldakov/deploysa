@@ -2,7 +2,7 @@
 {% load my_tags %}
 {% block content %}
 <div class="container_service">
-  <div class="header_form">Работы проведенные на технике</div>
+  <div class="header_form">{{ title }} {{ name_t }}</div>
   <button onclick="window.history.back(); return false;" class="btn_esc">Назад</button>
   <div class="conteiner_list_technic">
     {% for object in object_list %}
