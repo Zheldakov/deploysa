@@ -7,7 +7,7 @@ class Article(models.Model):
     """Статья"""
     title = models.CharField(max_length=100, verbose_name='Название', **NULLABLE)  # `Название новости
     description = models.CharField(max_length=250, verbose_name='Описание', **NULLABLE)  # Описание
-    date = models.DateField(verbose_name='Дата публикации')
+    date = models.DateTimeField(verbose_name='Дата публикации')
     text = models.TextField(verbose_name="Текст статьи")
 
 
