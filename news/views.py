@@ -1,9 +1,7 @@
-from datetime import date
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.template.defaultfilters import title
+from datetime import datetime
 
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from news.forms import ArticleForm
@@ -43,7 +41,7 @@ class ArticleCreateView(CreateView):
     }
 
     def form_valid(self, form):
-        form.instance.date = date.today()  # assuming you want the current login user to be set to the user
+        form.instance.date = datetime.now()  # assuming you want the current login user to be set to the user
         return super(ArticleCreateView, self).form_valid(form)
 
 
