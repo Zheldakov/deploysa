@@ -26,7 +26,7 @@ def user_login_view(request):
                 if user.is_active:  # Если пользователь активен
                     login(request, user)  # Авторизуем пользователя
                     return HttpResponseRedirect(
-                        reverse('technic:technic_list'))  # Переход на главную страницу с техникой
+                        reverse('news:news_list'))  # Переход на страницу с новостями
                 else:
                     return HttpResponse('Аккаунт не активен')
             else:

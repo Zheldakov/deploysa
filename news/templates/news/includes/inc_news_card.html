@@ -1,6 +1,6 @@
 {% load my_tags %}
 <div class="block_list_technic">
-    {% comment %} <div class="image_list_block_technic" style="background-image: url({{ object.photo|technic_media }})">
+{% comment %} <div class="image_list_block_technic" style="background-image: url({{ object.photo|technic_media }})">
     </div> {% endcomment %}
     <div class="line_block_news">
         <div class="block_data_news">
@@ -9,18 +9,15 @@
             <hr>
         </div>
             <div class="text_block_news">
-                <span>Отделение: {{ object.description}}</span>
+                <span>Кратко: {{ object.description}}</span>
             </div>
-
-
             <div class="btn_block_technic">
-                <a class="btn_list btn_news" href="#">Подробнее</a>
+                <a class="btn_list btn_news" href="{% url 'news:news_detail' object.pk %}">Подробнее</a>
                 {% if request.user.role == "admin" or request.user.role == "moderator" %}
-                <a class="btn_list btn_news" href="#">Редактирование</a>
-                <a class="btn_list_delete btn_news" href="#">Удаление</a>
+                <a class="btn_list btn_news" href="{% url 'news:news_update' object.pk %}">Редактирование</a>
+                <a class="btn_list_delete btn_news" href="{% url 'news:news_delete' object.pk %}">Удаление</a>
                 {% endif %}
             </div>
-    
     </div>
 </div>
 
