@@ -28,7 +28,7 @@ class ArticleDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         contex_data = super().get_context_data(**kwargs)
-        contex_data['title'] = f'Статья: {self.object.title}'
+        contex_data['title'] = f'{self.object.title}'
         return contex_data
 
 

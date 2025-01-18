@@ -244,3 +244,35 @@
     font-size: 15px;
     font-style: italic;
 }
+
+
+.block_data_news{
+    width: 50%;
+    
+
+}
+
+/* .block_data_news div{
+    border: 3px solid blueviolet;
+    padding: 1px;
+} */
+
+.heder_article{
+    margin-bottom: 1px;
+}
+.date_article{
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.text_article{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 3px;
+}
+.btn_article{
+    width: 20%;
+    font-size: 15px;
+}
