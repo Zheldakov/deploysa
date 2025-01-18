@@ -11,7 +11,6 @@
 <div class="conteiner">
     <div class="block_left">
         <div class="logo">
-            <!-- <span>С<span style="font-size: 45px;">&</span>A</span> system -->
             <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: auto;"/>
             <div class="text_logo">Система контроля и учета</div>
         </div>
@@ -21,15 +20,12 @@
                 <div style="width: 50%; text-align:center; margin-bottom: 5px;">Вход в систему:</div>
                 <div class="form_input">
                     {% csrf_token %}
-                    <!--                {{ form.as_p}}-->
                     {{ form.email }}
                     {{ form.password }}
                     <button type="submit">Войти</button>
                 </div>
-                <!-- <input type="text" name="loginUser" id="loginUser" placeholder=" Login"> -->
-                <!-- <input type="password" name="passwordUser" id="passwordUser" placeholder=" Password"> -->
                 {% if user is False %}
-                <span style="color:red">Данные не корректны</span>
+                    <span style="color:red">Данные не корректны</span>
                 {% endif %}
             </form>
         </div>
