@@ -14,6 +14,7 @@ class NewsListView(ListView):
     """Список всех статей"""
     model = Article
     paginate_by = 5
+    queryset = Article.objects.order_by('-date')
     template_name = 'news/news_list.html'
     extra_context = {
         'title': f'Новости'
