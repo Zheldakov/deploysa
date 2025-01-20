@@ -8,7 +8,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
-            <div class="button_form btn_news">
+            <div class="button_form">
                 <button type="submit" class="btn_enter">Сохранить</button>
                 <a href="{% url 'news:news_list' %}" class="btn_esc">Назад</a>
             </div>
