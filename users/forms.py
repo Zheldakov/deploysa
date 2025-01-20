@@ -8,26 +8,19 @@ from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from users.validators import validate_password
 
 
-class StyleFromMixin:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
-
-
 class UserLoginForm(forms.Form):
     """ Форма для авторизации пользователя."""
     email = forms.EmailField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
+        'class': 'input_login',
         'placeholder': 'Почта'
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
+        'class': 'input_login',
         'placeholder': 'Пароль'
     }))
 
 
-class UserForm(StyleFromMixin, forms.ModelForm):
+class UserForm(forms.ModelForm):
     """ Форма пользователя."""
 
     class Meta:
@@ -36,7 +29,7 @@ class UserForm(StyleFromMixin, forms.ModelForm):
                   'phone', 'telegram', 'avatar', 'role', 'is_active',)
 
 
-class UserCreateForm(StyleFromMixin, UserCreationForm):
+class UserCreateForm(UserCreationForm):
     """ Форма для создания нового пользователя."""
 
     class Meta:
@@ -46,7 +39,7 @@ class UserCreateForm(StyleFromMixin, UserCreationForm):
                   'phone', 'telegram', 'role',)
 
 
-class UserPasswordChangeForm(StyleFromMixin, PasswordChangeForm):
+class UserPasswordChangeForm(PasswordChangeForm):
     """ Форма для смены пароля."""
 
     def clean_new_password2(self):

@@ -17,8 +17,8 @@
 
         <div class="input">
             <form method="post" class="input_form">
-                <div style="width: 50%; text-align:center; margin-bottom: 5px;">Вход в систему:</div>
-                <div class="form_input">
+                <div class="login_entet_text">Вход в систему:</div>
+                <div class="input_form_box">
                     {% csrf_token %}
                     {{ form.email }}
                     {{ form.password }}

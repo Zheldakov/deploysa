@@ -41,76 +41,59 @@
     color: rgb(20, 109, 20);
     font-weight: 700;
     padding-top: 10px;
-    }
+}
 
-.text_logo{
+.text_logo {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    /* background-color: rgb(20, 109, 20); */
     font-size: 60%;
     color: white;
     padding: 3px;
 }
 
-/* .logo span {
-    font-size: 70px;
-    color: red;
-    font-weight: 900;
-    -webkit-text-stroke: 3px #000000;
-} */
-
-.input {
-    width: 100%;
-    height: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
 .input_form {
     width: 100%;
-    height: 100%;
+    height: 60;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.form_input{
+
+.input_form_box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: end;
 }
 
-.form_input input{
-    margin: 2px 5px;
-    align-items: end;
+.login_entet_text {
     width: 100%;
-   }
+    text-align: left;
+    margin-bottom: 5px;
 
-/*.form_input p input{*/
-/*    width: 50%;*/
-/*}*/
-/*.input_form input {*/
-/*    margin: 5px;*/
-/*    height: 5%;*/
-/*    width: 50%;*/
-/*    font-size: 110%;*/
-/*    background-color: rgba(3, 3, 3, 0.074);*/
-/*    !* background-color: rgb(237, 241, 237); *!*/
-/*   border: 1px solid;*/
-/*}*/
+}
 
-.input_form input:focus {
+.input_login {
+    margin-top: 5px;
+    height: 5%;
+
+    font-size: 110%;
+    background-color: rgba(3, 3, 3, 0.074);
+
+    border: 1px solid;
+}
+
+
+.input_login:focus {
     outline: none;
     border: 1px, solid, rgb(63, 133, 63);
     background-color: rgb(186, 219, 186);
 }
 
-.input_form button {
-    margin: 5px;
-    /* height: 100%; */
+
+.input_form_box button {
+    margin-top: 5px;
     width: 100%;
     font-size: 120%;
     background-color: rgba(0, 0, 0, 0.9);
@@ -118,11 +101,9 @@
     color: white;
 }
 
-.input_form button:hover {
+.input_form_box button:hover {
     background-color: rgba(20, 109, 20, 0.7);
     border: 1px, solid, rgba(20, 109, 20, 0.7);
-    /* background-color: rgb(63, 133, 63);
-    border: 1px, solid, rgb(63, 133, 63); */
     color: white;
 
 }
@@ -140,12 +121,10 @@
 .footer a {
     font-style: normal;
     color: rgb(63, 133, 63);
-    /* text-decoration: none; */
 }
 
 .footer a:hover {
     font-weight: 700;
-    /* text-decoration:underline; */
 }
 
 /* _________________right block_____________ */
@@ -166,7 +145,6 @@
 .right_bottom_block {
     width: 100%;
     height: 30%;
-    /* border: 3px solid red; */
     margin: 15px;
     padding-left: 20%;
     padding-right: 20%;
@@ -193,7 +171,6 @@
 #block_top,
 #block_center,
 #block_bottom {
-    /* background-color: red; */
     border: 3px solid black;
     width: 350px;
     height: 250px;
@@ -201,12 +178,10 @@
 }
 
 #block_top {
-
     background-image: url(../image/kombain.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
-    /* transition:  background-size 1s; */
     transition: background-image .8s;
 }
 
@@ -215,7 +190,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
-    /* transition: background-size .5s; */
+
     transition: background-image .8s;
 
 }
@@ -231,18 +206,13 @@
 }
 
 #block_top:hover {
-    /* background-size: 190%; */
     background-image: url(../image/uborka.png);
-     
 }
 
 #block_center:hover {
-    /* background-size: 190%; */
     background-image: url(../image/perevozka3.png);
-      
 }
 
 #block_bottom:hover {
     background-size: 190%;
-        
 }

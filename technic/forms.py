@@ -1,9 +1,8 @@
 from django import forms
 from .models import Department, TypeTechnic, Technic, Service
-from users.forms import StyleFromMixin
 
 
-class DepartmentForm(StyleFromMixin, forms.ModelForm):
+class DepartmentForm(forms.ModelForm):
     """ Форма подразделения."""
 
     class Meta:
@@ -11,7 +10,7 @@ class DepartmentForm(StyleFromMixin, forms.ModelForm):
         fields = '__all__'
 
 
-class TypeTechnicForm(StyleFromMixin, forms.ModelForm):
+class TypeTechnicForm(forms.ModelForm):
     """ Форма типа техники"""
 
     class Meta:
@@ -19,14 +18,14 @@ class TypeTechnicForm(StyleFromMixin, forms.ModelForm):
         fields = '__all__'
 
 
-class TechnicForm(StyleFromMixin, forms.ModelForm):
+class TechnicForm(forms.ModelForm):
     """ Форма типа техники"""
 
     class Meta:
         model = Technic
         fields = '__all__'
 
-class ServiceForm(StyleFromMixin, forms.ModelForm):
+class ServiceForm(forms.ModelForm):
     """ Форма для тех. Обслуживания"""
 
     class Meta:
