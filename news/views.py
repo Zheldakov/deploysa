@@ -52,6 +52,16 @@ class ArticleUpdateView(UpdateView):
     template_name = 'news/news_create.html'
     success_url = reverse_lazy('news:news_list')
 
+    def get_context_data(self, **kwargs):
+        contex_data = super().get_context_data(**kwargs)
+        if self.object:
+            # если объект есть, тогда вписываем первый
+            article_name = self.object.title
+            contex_data['title'] = f'Редактирование статьи {article_name}'
+        else:
+            contex_data['title'] = f'Нет статьи'
+        return contex_data
+
 
 class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     """ Удаление статьи"""

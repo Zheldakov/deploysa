@@ -9,6 +9,12 @@ class DepartmentForm(forms.ModelForm):
         model = Department
         fields = '__all__'
 
+        widgets = {
+            'description': forms.Textarea(attrs={
+                'cols': 65, 'rows': 5,
+                'class': 'text_article_form'}),
+        }
+
 
 class TypeTechnicForm(forms.ModelForm):
     """ Форма типа техники"""
@@ -16,6 +22,11 @@ class TypeTechnicForm(forms.ModelForm):
     class Meta:
         model = TypeTechnic
         fields = '__all__'
+        widgets = {
+            'description': forms.Textarea(attrs={
+                'cols': 65, 'rows': 5,
+                'class': 'text_article_form'}),
+        }
 
 
 class TechnicForm(forms.ModelForm):
@@ -31,3 +42,8 @@ class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = '__all__'
+        widgets = {
+            'description': forms.Textarea(attrs={
+                'cols': 65, 'rows': 5,
+                'class': 'text_article_form'})
+        }
