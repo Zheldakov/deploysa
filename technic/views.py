@@ -99,7 +99,7 @@ class DepartmentListView(ListView):
     model = Department
     template_name = 'technic/dep_list.html'
     extra_context = {
-        'title': f'Подразделения'
+        'title': f'Отделения'
     }
 
 
@@ -119,7 +119,7 @@ class DepartmentCreateView(CreateView):
     success_url = reverse_lazy('technic:department_list')
     template_name = 'technic/dep_create.html'
     extra_context = {
-        'title': f'Создание подразделения'
+        'title': f'Создание отделения'
     }
 
 
@@ -130,7 +130,7 @@ class DepartmentUpdateView(UpdateView):
     template_name = 'technic/dep_update.html'
     success_url = reverse_lazy('technic:department_list')
     extra_context = {
-        'title': f'Редактирование подразделения'
+        'title': f'Редактирование отделения'
     }
 
 
@@ -141,7 +141,7 @@ class DepartmentDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('technic:department_list')
     permission_required = 'technic.delete_department'
     extra_context = {
-        'title': f'Удаление подразделения'
+        'title': f'Удаление отделения'
     }
 
 
@@ -163,7 +163,7 @@ class TypeTechnicUpdateView(UpdateView):
     template_name = 'technic/type_update.html'
     success_url = reverse_lazy('technic:type_list')
     extra_context = {
-        'title': f'Редактирование подразделения'
+        'title': f'Редактирование отделения'
     }
 
 

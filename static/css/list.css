@@ -290,3 +290,7 @@
     border: 1px, solid, rgb(63, 133, 63);
     background-color: rgb(186, 219, 186);
 }
+
+.btn_news_inc{
+    width: 20%;
+}

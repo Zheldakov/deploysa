@@ -54,6 +54,9 @@ form {
 form div {
     margin: 2px;
 }
+form p{
+    margin-top: 5px;
+}
 
 label {
     font-weight: bold;

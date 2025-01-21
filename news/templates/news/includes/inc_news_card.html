@@ -12,10 +12,10 @@
                 <span>Кратко: {{ object.description}}</span>
             </div>
             <div class="btn_block_technic">
-                <a class="btn_list btn_news" href="{% url 'news:news_detail' object.pk %}">Подробнее</a>
+                <a class="btn_list btn_news btn_news_inc" href="{% url 'news:news_detail' object.pk %}">Подробнее</a>
                 {% if request.user.role == "admin" or request.user.role == "moderator" %}
-                <a class="btn_list btn_news" href="{% url 'news:news_update' object.pk %}">Редактирование</a>
-                <a class="btn_list_delete btn_news" href="{% url 'news:news_delete' object.pk %}">Удаление</a>
+                <a class="btn_list btn_news btn_news_inc" href="{% url 'news:news_update' object.pk %}">Редактирование</a>
+                <a class="btn_list_delete btn_news btn_news_inc" href="{% url 'news:news_delete' object.pk %}">Удаление</a>
                 {% endif %}
             </div>
     </div>
