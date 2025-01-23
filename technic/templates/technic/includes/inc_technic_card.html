@@ -20,6 +20,7 @@
             <div class="btn_block_technic">
                 <a class="btn_list btn_technic" href="{% url 'technic:technic_service_list' object.pk %}">Сервис</a>
                 <a class="btn_list btn_technic" href="{% url 'technic:technic_detail' object.pk %}">Подробнее</a>
+                 <a title="Местоположение" class="btn_list btn_technic_glonass" href="{% url 'technic:technic_lost_data' object.pk %}">&#9873;</a>
             </div>
         </div>
         {% if object.is_active == False %}

@@ -187,6 +187,12 @@
     font-size: 14px;
 
 }
+.btn_technic_glonass {
+    width: 10%;
+    margin: 1px;
+    font-size: 14px;
+
+}
 
 .top_bottom_list {
     display: flex;

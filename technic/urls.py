@@ -4,7 +4,8 @@ from technic.apps import TechnicConfig
 from technic.views import TechnicListView, DepartmentListView, TypeListView, TypeTechnicUpdateView, \
     DepartmentUpdateView, TypeTechnicDeleteView, DepartmentDeleteView, DepartmentCreateView, TypeTechnicCreateView, \
     TechnicDetailView, TechnicUpdateView, TechnicDeleteView, TechnicCreateView, TechnicListFilterDepartmentView, \
-    TechnicListFilterTypeTechnicView, TechnicSearchListView, TechnicServiceUpdateView, ServiceFilterTechnicView
+    TechnicListFilterTypeTechnicView, TechnicSearchListView, TechnicServiceUpdateView, ServiceFilterTechnicView, \
+    TechnicLostDataView
 
 app_name = TechnicConfig.name
 
@@ -27,4 +28,5 @@ urlpatterns = [
     path('number/search/', TechnicSearchListView.as_view(), name='technic_search'), # поиск техники по гос номеру
     path('service/<int:pk>/', TechnicServiceUpdateView.as_view(), name='technic_service_update'), # сервис техники
     path('<int:pk>/service/', ServiceFilterTechnicView.as_view(), name='technic_service_list'), # список сервисов по техники
+    path('<int:pk>/lost_data/', TechnicLostDataView.as_view(), name='technic_lost_data'), # последние данные от техники
 ]

@@ -1,0 +1,32 @@
+{% extends 'technic/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="content_form">
+        <div class="header_form">{{ title }} {{ object }}</div>
+        <div class="body_form">
+            <div class="form_form_profile">
+                <div class="image_form" style="background-image: url({{ technic.photo|technic_media }})">
+                </div>
+            </div>
+            <div class="user_text">
+                <span><div class="label_user">Наименование:</div> <div>{{ object.name }}</div></span>
+                <span><div class="label_user">Гос.номер:</div> <div>{{ object.number|default:"не указано" }}</div></span>
+                {% if glonass_technic %}
+                    <span><div class="label_user">Дата и время::</div> <div>{{ glonass_data }}</div></span>
+                    <span><div class="label_user">Адрес:</div> <div>{{ glonass_address }}</div></span>
+                    <span><div class="label_user">Скорость:</div> <div>{{ glonass_speed }}</div></span>
+                    {% if glonass_geozone %}
+                        <span><div class="label_user">Номер поле:</div> <div>{{ glonass_geozone }}</div></span>
+                    {% endif %}
+                {% else %}
+                    <div style="color: red; width:100%; text-align: center;margin-bottom: 5px;">Данные о местонахождении
+                        отсутствуют
+                    </div>
+                {% endif %}
+            </div>
+            <div class="button_form">
+                <a href="{% url 'technic:technic_list' %}" class="btn_enter">Назад</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

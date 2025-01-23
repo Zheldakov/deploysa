@@ -4,9 +4,11 @@ from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.shortcuts import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
+from pyexpat.errors import messages
 
 from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm, ServiceForm
 from technic.models import Technic, TypeTechnic, Department, Service
+from technic.service import get_info
 
 
 class TechnicListView(ListView):
@@ -256,4 +258,21 @@ class ServiceFilterTechnicView(ListView):
             # если список объектов есть, тогда вписываем первый
             contex_data['name_t'] = self.object_list[0].technic
         contex_data['title'] = f'Список работ на технике'
+        return contex_data
+
+class TechnicLostDataView(DetailView):
+    model = Technic
+    template_name = 'technic/technic_glonass_detail.html'
+
+    def get_context_data(self, **kwargs):
+        contex_data = super().get_context_data(**kwargs)
+        num_technic = self.object.number
+        glonass_info = get_info(num_technic)
+        contex_data['title'] = f'Последние данные от'
+        if glonass_info:
+            contex_data['glonass_technic'] = glonass_info['glonass_technic']
+            contex_data['glonass_data'] = glonass_info['glonass_data']
+            contex_data['glonass_address'] = glonass_info['glonass_address']
+            contex_data['glonass_speed'] = glonass_info['glonass_speed']
+            contex_data['glonass_geozone'] = glonass_info['glonass_geozone']
         return contex_data
