@@ -158,4 +158,4 @@ def get_info(num_technic):
                 "glonass_speed": last_message[0]['speed'],
                 "glonass_geozone": technic.get_fild(last_message),
             }
-            return
+            return technic_info
