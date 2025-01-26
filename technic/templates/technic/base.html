@@ -3,9 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async>
+        window.onload = function () {
+          document.body.classList.add('loaded_hiding');
+          window.setTimeout(function () {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('loaded_hiding');
+          }, 500);
+        }
+      </script>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="ico"n href="{% static 'image/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'image/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/base_page.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
@@ -14,6 +23,12 @@
     <title>C&A: {{ title }}</title>
 </head>
 <body>
+    <div class="preloader">
+        <div class="preloader__row">
+          <div class="preloader__item"></div>
+          <div class="preloader__item"></div>
+        </div>
+      </div>
 <div class="logo">
     <div class="left_logo">
         <img src="{% static 'image/logo.png' %}" alt="Система контроля и учета" style="width: 100%; margin-top: 5px;">
@@ -77,5 +92,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
